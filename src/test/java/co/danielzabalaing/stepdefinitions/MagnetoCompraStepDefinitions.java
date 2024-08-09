@@ -1,11 +1,13 @@
 package co.danielzabalaing.stepdefinitions;
 
+import co.danielzabalaing.exceptions.OrdenDeCompraNoRegistrada;
 import co.danielzabalaing.interactions.Maximizar;
+import co.danielzabalaing.questions.Orden;
 import co.danielzabalaing.tasks.FillShippingAdress;
 import co.danielzabalaing.tasks.Registrar;
 import co.danielzabalaing.tasks.SeleccionariTems;
 import co.danielzabalaing.tasks.ValidarCostoPedido;
-import io.cucumber.java.en.And;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,7 +15,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-
+import static co.danielzabalaing.exceptions.OrdenDeCompraNoRegistrada.MENSAJE_ERROR_CREACION_ORDEN_COMPRA;
 import static co.danielzabalaing.userinterfaces.CheckoutPage.BUTTON_PROCED_CHECKOUT;
 import static co.danielzabalaing.userinterfaces.HomePage.LINK_REGISTRO;
 import static co.danielzabalaing.userinterfaces.MyAccountPage.BUTTON_WHAT_IS_NEW;
@@ -33,39 +35,38 @@ public class MagnetoCompraStepDefinitions {
         );
     }
     @Given("se registra en la tienda virtual")
-    public void elUsuarioSeRegistra() {
+    public void elUsuarioSeRegistra(DataTable credenciales) {
         // Write code here that turns the phrase above into concrete actions
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
                 Click.on(LINK_REGISTRO),
-                Registrar.unUsuarioNuevo()
+                Registrar.unUsuarioNuevo(credenciales)
         );
     }
 
     @When("selecciona el producto y los detalles del producto")
-    public void seleccionaElProductoYLosDetallesDelProducto() {
+    public void seleccionaElProductoYLosDetallesDelProducto(DataTable detalles) {
         // Write code here that turns the phrase above into concrete actions
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
                 Click.on(BUTTON_WHAT_IS_NEW),
                 Click.on(BUTTON_SHOP_NEW_YOGA),
-                SeleccionariTems.iTemsConDetalles(),
+                SeleccionariTems.iTemsConDetalles(detalles),
                 Click.on(BUTTON_PROCED_CHECKOUT)
+
         );
     }
     @When("el usuario valida su compra y agrega los detalles de pago")
-    public void elUsuarioValidaSuCompraYAgregaLosDetallesDePago() {
+    public void elUsuarioValidaSuCompraYAgregaLosDetallesDePago(DataTable datos) {
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
-                FillShippingAdress.detallesEntrega(),
+                FillShippingAdress.detallesEntrega(datos),
                 ValidarCostoPedido.detallesPedido()
-
         );
     }
     @Then("el deberia de ver que su compra fue realizada de manera exitosa")
     public void elDeberiaDeVerQueSuCompraFueRealizadaDeManeraExitosa() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       theActorInTheSpotlight().should(seeThat(Orden.CreadaConExito()).orComplainWith(OrdenDeCompraNoRegistrada.class,MENSAJE_ERROR_CREACION_ORDEN_COMPRA));
     }
 
 }

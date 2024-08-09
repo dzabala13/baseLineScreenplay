@@ -8,5 +8,5 @@ import static net.serenitybdd.screenplay.targets.Target.the;
 public class YogaNewPage {
 
     public static final Target ITEM_SELECTED = the("item seleccionado que se comprara")
-            .located(By.xpath("//*[@class='product-item-info']//*[contains(@alt,'Fiona Fitness Short')]"));
+            .locatedBy("//*[@class='product-item-info']//*[contains(@alt,'{0}')]");
 }
