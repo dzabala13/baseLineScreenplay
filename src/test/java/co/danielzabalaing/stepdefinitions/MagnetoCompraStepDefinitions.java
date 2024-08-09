@@ -36,7 +36,6 @@ public class MagnetoCompraStepDefinitions {
     }
     @Given("se registra en la tienda virtual")
     public void elUsuarioSeRegistra(DataTable credenciales) {
-        // Write code here that turns the phrase above into concrete actions
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
                 Click.on(LINK_REGISTRO),
@@ -46,7 +45,6 @@ public class MagnetoCompraStepDefinitions {
 
     @When("selecciona el producto y los detalles del producto")
     public void seleccionaElProductoYLosDetallesDelProducto(DataTable detalles) {
-        // Write code here that turns the phrase above into concrete actions
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
                 Click.on(BUTTON_WHAT_IS_NEW),

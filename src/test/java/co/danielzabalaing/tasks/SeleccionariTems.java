@@ -32,9 +32,6 @@ public class SeleccionariTems implements Task {
                 Click.on(BUTTON_ADD_TO_CART),
                 Click.on(LINK_GO_TO_SHOPPING_CAR),
                 Guardar.informacionParaDespues("subtotalPrice",LABEL_TEXT_SUBTOTAL)
-
-
-
         );
 
     }

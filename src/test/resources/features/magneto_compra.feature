@@ -8,7 +8,7 @@ Feature: Aperturar Cuentas Magneto y Compra de producto
     Given que Daniel esta en la pagina de magneto
     And se registra en la tienda virtual
       | nombre | apellido  | email                  | password    |
-      | Juan   | Fernandez | danielfalso7@gmail.com | Password123 |
+      | Juan   | Fernandez | danielfalso@gmail.com | Password123 |
     And selecciona el producto y los detalles del producto
       | item                | talla | color | cantidad |
       | Fiona Fitness Short | 28    | Black | 1        |
