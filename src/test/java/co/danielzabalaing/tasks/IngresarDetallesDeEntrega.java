@@ -9,17 +9,15 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.actions.type.Type;
 
-import javax.xml.crypto.Data;
-
 import static co.danielzabalaing.userinterfaces.ShippingDetailsPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class FillShippingAdress implements Task {
+public class IngresarDetallesDeEntrega implements Task {
 
 
     DataTable datos ;
 
-    public FillShippingAdress(DataTable datos){
+    public IngresarDetallesDeEntrega(DataTable datos){
         this.datos  = datos;
     }
     @Override
@@ -39,8 +37,8 @@ public class FillShippingAdress implements Task {
     }
 
 
-    public static Performable detallesEntrega(DataTable datos){
+    public static Performable delUsuario(DataTable datos){
 
-        return instrumented(FillShippingAdress.class, datos);
+        return instrumented(IngresarDetallesDeEntrega.class, datos);
     }
 }

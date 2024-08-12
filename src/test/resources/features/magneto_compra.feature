@@ -1,14 +1,14 @@
 Feature: Aperturar Cuentas Magneto y Compra de producto
   Yo Como usuario nuevo en Magneto
-  Quiero aperturar una cuenta de ahorros
+  Quiero aperturar una cuenta dentro de la pagina de Magneto
   Para hacer la compra de un producto
 
 
   Scenario: Creacion de un usuario para realizar compra de articulos
     Given que Daniel esta en la pagina de magneto
     And se registra en la tienda virtual
-      | nombre | apellido  | email                  | password    |
-      | Juan   | Fernandez | danielfalso@gmail.com | Password123 |
+      | nombre | apellido  | email                 | password    |
+      | Daniel | Fernandez | danielfalso@gmail.com | Password123 |
     And selecciona el producto y los detalles del producto
       | item                | talla | color | cantidad |
       | Fiona Fitness Short | 28    | Black | 1        |

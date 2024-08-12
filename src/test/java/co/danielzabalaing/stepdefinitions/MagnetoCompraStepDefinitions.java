@@ -3,10 +3,10 @@ package co.danielzabalaing.stepdefinitions;
 import co.danielzabalaing.exceptions.OrdenDeCompraNoRegistrada;
 import co.danielzabalaing.interactions.Maximizar;
 import co.danielzabalaing.questions.Orden;
-import co.danielzabalaing.tasks.FillShippingAdress;
-import co.danielzabalaing.tasks.Registrar;
-import co.danielzabalaing.tasks.SeleccionariTems;
-import co.danielzabalaing.tasks.ValidarCostoPedido;
+import co.danielzabalaing.tasks.IngresarDetallesDeEntrega;
+import co.danielzabalaing.tasks.Registrarse;
+import co.danielzabalaing.tasks.SeleccionarProducto;
+import co.danielzabalaing.tasks.ValidarLosCostos;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -39,17 +39,17 @@ public class MagnetoCompraStepDefinitions {
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
                 Click.on(LINK_REGISTRO),
-                Registrar.unUsuarioNuevo(credenciales)
+                Registrarse.enLaPaginaDeMagneto(credenciales)
         );
     }
 
     @When("selecciona el producto y los detalles del producto")
-    public void seleccionaElProductoYLosDetallesDelProducto(DataTable detalles) {
+    public void seleccionaElProductoYLosDetallesDelProducto(DataTable descripcion) {
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
                 Click.on(BUTTON_WHAT_IS_NEW),
                 Click.on(BUTTON_SHOP_NEW_YOGA),
-                SeleccionariTems.iTemsConDetalles(detalles),
+                SeleccionarProducto.conDetalles(descripcion),
                 Click.on(BUTTON_PROCED_CHECKOUT)
 
         );
@@ -58,13 +58,15 @@ public class MagnetoCompraStepDefinitions {
     public void elUsuarioValidaSuCompraYAgregaLosDetallesDePago(DataTable datos) {
         withCurrentActor();
         theActorInTheSpotlight().attemptsTo(
-                FillShippingAdress.detallesEntrega(datos),
-                ValidarCostoPedido.detallesPedido()
+                IngresarDetallesDeEntrega.delUsuario(datos),
+                ValidarLosCostos.delPedido()
         );
     }
     @Then("el deberia de ver que su compra fue realizada de manera exitosa")
     public void elDeberiaDeVerQueSuCompraFueRealizadaDeManeraExitosa() {
-       theActorInTheSpotlight().should(seeThat(Orden.CreadaConExito()).orComplainWith(OrdenDeCompraNoRegistrada.class,MENSAJE_ERROR_CREACION_ORDEN_COMPRA));
+       theActorInTheSpotlight().should(seeThat(Orden.CreadaConExito())
+               .orComplainWith(OrdenDeCompraNoRegistrada.class,
+                       MENSAJE_ERROR_CREACION_ORDEN_COMPRA));
     }
 
 }

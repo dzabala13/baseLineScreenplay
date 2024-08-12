@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import static co.danielzabalaing.userinterfaces.CheckoutPaymentPage.BUTTON_FINAL_CONFIRMATION;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class ValidarCostoPedido implements Task  {
+public class ValidarLosCostos implements Task  {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
@@ -20,7 +20,7 @@ public class ValidarCostoPedido implements Task  {
         }
 
     }
-    public static Performable detallesPedido(){
-        return instrumented(ValidarCostoPedido.class);
+    public static Performable delPedido(){
+        return instrumented(ValidarLosCostos.class);
     }
 }

@@ -7,15 +7,14 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.type.Type;
-import net.serenitybdd.screenplay.actions.type.TypeValue;
 
 import static co.danielzabalaing.userinterfaces.RegistroPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class Registrar extends Faker implements Task {
+public class Registrarse extends Faker implements Task {
     public DataTable datos;
 
-    public Registrar(DataTable datos){
+    public Registrarse(DataTable datos){
         this.datos=datos;
     }
 
@@ -34,7 +33,7 @@ public class Registrar extends Faker implements Task {
 
     }
 
-    public static Performable unUsuarioNuevo(DataTable datos){
-        return instrumented(Registrar.class,datos);
+    public static Performable enLaPaginaDeMagneto(DataTable datos){
+        return instrumented(Registrarse.class,datos);
     }
 }

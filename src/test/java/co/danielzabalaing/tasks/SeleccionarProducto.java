@@ -14,10 +14,10 @@ import static co.danielzabalaing.userinterfaces.ItemDetailsPage.*;
 import static co.danielzabalaing.userinterfaces.YogaNewPage.ITEM_SELECTED;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class SeleccionariTems implements Task {
+public class SeleccionarProducto implements Task {
     DataTable detalles;
 
-    public SeleccionariTems (DataTable detalles){
+    public SeleccionarProducto(DataTable detalles){
         this.detalles = detalles;
     }
 
@@ -35,7 +35,7 @@ public class SeleccionariTems implements Task {
         );
 
     }
-    public static Performable iTemsConDetalles(DataTable detalles){
-        return instrumented(SeleccionariTems.class, detalles);
+    public static Performable conDetalles(DataTable detalles){
+        return instrumented(SeleccionarProducto.class, detalles);
     }
 }
