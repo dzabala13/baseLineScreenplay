@@ -31,7 +31,7 @@ public class IngresarDetallesDeEntrega implements Task {
                 SelectFromOptions.byVisibleText(datos.asMaps().get(0).get("country")).from(SELECTED_CONUNTRY),
                 Type.theValue(datos.asMaps().get(0).get("phone")   ).into(INPUT_TEXT_PHONE_NUMBER),
                 Click.on(RADIO_BUTTON_SHIPPING_METHODS),
-                Guardar.informacionParaDespues("taxPrice",LABEL_SHIPPING_COST),
+                Guardar.informacionDeSesion("taxPrice",LABEL_SHIPPING_COST),
                 Click.on(BUTTON_SUMMIT)
         );
     }

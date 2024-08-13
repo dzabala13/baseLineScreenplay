@@ -24,7 +24,7 @@ public class Guardar implements Interaction {
         System.out.println(valorClave);
     }
 
-    public static Performable informacionParaDespues(String clave, Target valor){
+    public static Performable informacionDeSesion(String clave, Target valor){
         return instrumented(Guardar.class, clave, valor);
     }
 }

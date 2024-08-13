@@ -31,7 +31,7 @@ public class SeleccionarProducto implements Task {
                 Type.theValue(detalles.asMaps().get(0).get("cantidad")).into(AMOUNT_ITEMS),
                 Click.on(BUTTON_ADD_TO_CART),
                 Click.on(LINK_GO_TO_SHOPPING_CAR),
-                Guardar.informacionParaDespues("subtotalPrice",LABEL_TEXT_SUBTOTAL)
+                Guardar.informacionDeSesion("subtotalPrice",LABEL_TEXT_SUBTOTAL)
         );
 
     }

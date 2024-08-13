@@ -26,14 +26,6 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class MagnetoCompraStepDefinitions {
 
-    @Given("que {word} esta en la pagina de magneto")
-    public void queElUsuarioEstaEnLaPaginaDeMagneto(String nombre) {
-        OnStage.setTheStage(new OnlineCast());
-        theActorCalled(nombre).wasAbleTo(
-                Open.url("https://magento.softwaretestingboard.com/"),
-                Maximizar.elNavegador()
-        );
-    }
     @Given("se registra en la tienda virtual")
     public void elUsuarioSeRegistra(DataTable credenciales) {
         withCurrentActor();
