@@ -2,6 +2,7 @@ package co.danielzabalaing.stepdefinitions;
 
 import co.danielzabalaing.interactions.Abrir;
 import co.danielzabalaing.interactions.Maximizar;
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
@@ -21,5 +22,10 @@ public class Hooks {
                 Abrir.elNavegador(),
                 Maximizar.elNavegador()
         );
+    }
+
+    @After
+    public void finEscenario(){
+        System.out.println("Fin del Escenario");
     }
 }
